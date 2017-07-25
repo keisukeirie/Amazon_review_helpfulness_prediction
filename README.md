@@ -33,6 +33,11 @@ HIGH prediction rate: 63.7%
 
 ## Data used:
 
+the original data and data unzipping function was created by Julian McAuley
+
+Julian McAuley
+http://jmcauley.ucsd.edu/data/amazon/links.html
+
 ------------
 #### other info:
 
