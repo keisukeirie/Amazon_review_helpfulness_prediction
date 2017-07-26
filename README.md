@@ -17,10 +17,10 @@ images
 ## Introduction:  
 
 When you shop in Amazon, Do you notice that product reviews are in the order of helpfulness of reviews?  
-This helpfulness is based on user votes. 
-If Amazon users find review helpful, users can simply leave positive votes on that review.  
+This helpfulness is based on user's votes. If Amazon users find a product review helpful,  
+users can simply leave positive votes on that review.  
 the review with most positive votes gets placed as "Top Customer Reviews" on the product page by Amazon.  
-  
+Here is an example from actual Amazon website.  
 ![example1](images/example_of_review.png)  
    
 My question is:  
