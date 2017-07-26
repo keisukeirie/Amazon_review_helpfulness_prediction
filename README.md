@@ -14,17 +14,17 @@ Procedure.ipynb
 images  
 + jpeg images used in this readme markdown file.  
 
-## Introduction:
+## Introduction:  
+
 When you shop in Amazon, Do you notice that product reviews are in the order of helpfulness of reviews?  
-This helpfulness is based on user votes. If Amazon users find review helpful, users can simply leave positive votes on that review.  
+This helpfulness is based on user votes. 
+If Amazon users find review helpful, users can simply leave positive votes on that review.  
 the review with most positive votes gets placed as "Top Customer Reviews" on the product page by Amazon.  
     
-     
 My question is:  
 **Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**  
-  
-  
-To answer this question, I am using Amazon review dataset from [Julian McAuley's website] (http://jmcauley.ucsd.edu/data/amazon/links.html)  
+   
+To answer this question, I am using Amazon review dataset from [Julian McAuley's website](http://jmcauley.ucsd.edu/data/amazon/links.html)  
 and created a XGboost binary classifier prediction model.  
   
 2 label classes for my model:  
@@ -34,6 +34,7 @@ not helpful reviews = reviews with less than 75% of total votes were positive
 With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.  
   
 ## Results  
+  
 Dataset used:  
 Home & Kitchen  
 Prediction accuracy: 74.42%  
