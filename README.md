@@ -16,22 +16,23 @@ images
 
 ## Introduction:
 When you shop in Amazon, Do you notice that product reviews are in the order of helpfulness of reviews?  
-This helpfulness is based on user votes. If Amazon users find review helpful,  
-users can simply leave positive votes on that review.  
+This helpfulness is based on user votes. If Amazon users find review helpful, users can simply leave positive votes on that review.  
 the review with most positive votes gets placed as "Top Customer Reviews" on the product page by Amazon.  
+    
+     
+My question is:  
+**Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**  
   
-My question is:
-**Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**
-
+  
 To answer this question, I am using Amazon review dataset from [Julian McAuley's website] (http://jmcauley.ucsd.edu/data/amazon/links.html)  
 and created a XGboost binary classifier prediction model.  
-
-2 label classes for my model:
+  
+2 label classes for my model:  
 Highly helpful reviews = reviews with more than 75% of total votes were positive (positive = voted as helpful review)  
 not helpful reviews = reviews with less than 75% of total votes were positive  
-
-With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.
-
+  
+With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.  
+  
 ## Results  
 Dataset used:  
 Home & Kitchen  
@@ -49,16 +50,16 @@ HIGH prediction rate: 63.7%
   
 ## Data used:
 
-the original data and data unzipping function was created by Julian McAuley
-
+the original data and data unzipping function was created by Julian McAuley  
+  
 This dataset contains product reviews and metadata from Amazon,   
 including 142.8 million reviews spanning May 1996 - July 2014.   
 The dataset includes reviews (ratings, text, helpfulness votes),   
 product metadata (descriptions, category information, price, brand, and image features),   
 and links (also viewed/also bought graphs).  
-
-I used review dataset and metadata in order to build my prediction model.
-
+  
+I merged review dataset and metadata together and preprocessed data to run prediction model.  
+  
 ------------
 #### other info:
 
