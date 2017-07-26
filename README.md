@@ -6,6 +6,7 @@ _last updated: 7/25/2017_
 
 python folder:  
 + contains 1 python files  
+   * data_prep_new.py contains all function used for this project  
    
 Procedure.ipynb  
 + Jupyter notebook that runs python codes above. note that there is no data stored in this repo.
@@ -14,9 +15,19 @@ images
 + jpeg images used in this readme markdown file.  
 
 ## Introduction:
+When you shop in Amazon, Do you notice that product reviews are in the order of helpfulness of reviews?  
+This helpfulness is based on user votes. If Amazon users find review helpful, they simply leave a positive vote on that review.  
+the review with most positive votes gets placed as "Top Customer Reviews" on the product page by Amazon.  
+  
+My question is:
+**Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**
+
+To answer this question, I am using Amazon review dataset from [Julian McAuley's website] (http://jmcauley.ucsd.edu/data/amazon/links.html)  
 
 
 ## Results  
+Dataset used:  
+Home & Kitchen  
 score: 74.42%  
 
 **Confusion Matrix**  
@@ -35,8 +46,13 @@ HIGH prediction rate: 63.7%
 
 the original data and data unzipping function was created by Julian McAuley
 
-Julian McAuley
-http://jmcauley.ucsd.edu/data/amazon/links.html
+This dataset contains product reviews and metadata from Amazon,   
+including 142.8 million reviews spanning May 1996 - July 2014.   
+The dataset includes reviews (ratings, text, helpfulness votes),   
+product metadata (descriptions, category information, price, brand, and image features),   
+and links (also viewed/also bought graphs).  
+
+I used review dataset and metadata in order to build my prediction model.
 
 ------------
 #### other info:
@@ -45,8 +61,10 @@ http://jmcauley.ucsd.edu/data/amazon/links.html
 #### Filters applied to both models  
   
 **label:**  
-[HIGH,LOW]  
-  
+HIGH,LOW
+
+HIGH = Highly helpful reviews  
+LOW = not helpful reviews  
 -----------------
 #### 1. XGBOOST
   
@@ -60,4 +78,8 @@ http://jmcauley.ucsd.edu/data/amazon/links.html
 ## Other:  
   
 ## Resources:  
-　　
+
+http://jmcauley.ucsd.edu/data/amazon/links.html  
+J. McAuley, A. Yang. Addressing Complex and Subjective Product-Related Queries with Customer Reviews. WWW. 2016　
+R. He, J. McAuley. Modeling the visual evolution of fashion trends with one-class collaborative filtering. WWW, 2016  
+J. McAuley, C. Targett, J. Shi, A. van den Hengel. Image-based recommendations on styles and substitutes. SIGIR, 2015  
