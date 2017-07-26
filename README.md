@@ -20,7 +20,9 @@ When you shop in Amazon, Do you notice that product reviews are in the order of 
 This helpfulness is based on user votes. 
 If Amazon users find review helpful, users can simply leave positive votes on that review.  
 the review with most positive votes gets placed as "Top Customer Reviews" on the product page by Amazon.  
-    
+  
+![example1](images/example_of_review.png)  
+   
 My question is:  
 **Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**  
    
