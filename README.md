@@ -30,7 +30,7 @@ Here is an example from actual Amazon website:
 My question is:  
 **Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**  
    
-To answer this question, I am using Amazon review dataset from [Julian McAuley's website](http://jmcauley.ucsd.edu/data/amazon/links.html)  
+To answer this question, I used Amazon review dataset from [Julian McAuley's website](http://jmcauley.ucsd.edu/data/amazon/links.html)  
 and created a XGboost binary classifier prediction model.  
   
 2 label classes for my model:  
@@ -57,7 +57,7 @@ HIGH prediction rate: 63.7%
   
 ## Data used:
 
-the original data and data unzipping function was created by Julian McAuley  
+the original data and data unzipping function were created by Julian McAuley  
   
 This dataset contains product reviews and metadata from Amazon,   
 including 142.8 million reviews spanning May 1996 - July 2014.   
@@ -71,7 +71,7 @@ I merged review dataset and metadata together and preprocessed data to run predi
 #### other info:
 
 ## MODELS
-#### Filters applied to both models  
+#### Filters applied to the model  
   
 **label:**  
 HIGH,LOW
@@ -87,7 +87,7 @@ LOW = not helpful reviews
 ## Findings:  
  
    
-**XGBoost model's top10 most important features:**  
+**XGBoost model's top15 most important features:**  
 　　
 ## Other:  
   
