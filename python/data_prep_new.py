@@ -9,6 +9,7 @@ import spacy
 np.random.seed(32113)
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 from sklearn.decomposition import NMF
 from nltk.corpus import stopwords
@@ -54,24 +55,35 @@ def lemma(doc):
 def df_prep1(data_path,meta_path,topic,filter_num):
     '''
     FUNCTION:
-    This is a function reads a document and run spaCy lemmetizer on the document
-    This lemmetizer will be used as a parameter for Sklearn Tf-idf Vectorizer
+    This is the first step of preparing data frame for my prediction model.
+    This function will
+    1. create review helpfulness related features
+    2. merge review dataset and meta dataset by 'asin' feature.
+    3. genereate features from meta data
+    4. filter any product with null price AND null rank_values.
+    5. fills in any null values after 3.
+    6. filters meta data by product categories.
 
     INPUT:
     path = path of json.gz file (string)
     meta_path = math of meta json.gz file (string)
-    category = string that indicates category of json.gz file (string)
+    topic = string that indicates the main category of json.gz file (string)
+    filter_num = filters any category of product where total number of product
+        with this category label is less than filter_num (int)
 
     OUTPUT:
-    merged_df = pandas dataframe contains features needed to run xgboost.
-    tfidf_model = tfidf model created with list of reviews
-    tfidf_matrix = tfidf matrix created with list of reviews
+    merged_df = pandas dataframe contains features from meta data.
     '''
+    #time run-time
     start_time = time.time()
 
+    # create panda data frames with data_path and meta_path
+    # also Data_prep1 creates helpfulness features
     df = Data_prep1(data_path)
     meta = getDF(meta_path)
+    # add_meta_info prepares features from metadata
     merged_df = add_meta_info(df,meta,topic,filter_num)
+    # price_adjustor replace null price values with average price of product within same category
     merged_df = price_adjustor(merged_df)
     merged_df['price']=merged_df.price.round(2)
     merged_df = merged_df.drop(['rank_keys'],axis = 1)
@@ -80,10 +92,27 @@ def df_prep1(data_path,meta_path,topic,filter_num):
     return merged_df
 
 def df_prep_train1(merged_df,filename,tfidf_set=[2,0.95,10000,'l2']):
+    '''
+    FUNCTION:
+    The first function to run after spliting your merged_df into
+    training and test dataset.
+    The function will:
+    1. create tfidf matrix and tfidf model with training dataset.
 
+    INPUT:
+    merged_df = your training dataset (pandas dataframe)
+    filename = used to name pickle files
+    tfidf_set = parameters for tfidfclassifier
+
+    OUTPUT:
+    tfidf_matrix = the matrix containing tfidf term results
+    tfidf model = the tfidfclassifer model (fit with your training dataset)
+    '''
+    #again timing. tfidf may take a while depends on your dataset and settings
     start_time = time.time()
-
+    # tfidf prepared with Data_prep2_tfidf.
     tfidf_matrix, tfidf_model = Data_prep2_tfidf(merged_df,tfidf_set)
+    #saves tfidf model and matrix
     with open(r"./{}_tfidf_model.pickle".format(filename), "wb") as output_file:
         pickle.dump(tfidf_model, output_file)
     with open(r"./{}_tfidf_matrix.pickle".format(filename), "wb") as output_file:
@@ -94,9 +123,29 @@ def df_prep_train1(merged_df,filename,tfidf_set=[2,0.95,10000,'l2']):
 
 
 def df_prep_train2(df, filename, tfidf_matrix, tfidf_model, max_feature = 1000, NMF_list = [6,'cd',0.1,0.5], tfidf_set=[2,0.95,10000,'l2']):
+    '''
+    FUNCTION:
+    This function will run after df_prep_train1.
+    It uses outputs of df_prep_train1 to generate NMF results.
+    It will also run another tfidf model to add tfidf top max_feature words
+    as features.
+    It finally outputs dataframe, NMF model and tfidf model (for features).
+
+    INPUT:
+    df = training dataframe (Pandas)
+    filename = filename used to name pickle filename
+    tfidf_matrix = tfidf matrix from df_prep_train1
+    tfidf_model = tfidf model frim df_prep_train1
+    max_feature = max number of tfidf words added as features
+    NMF_list = NMF parameters
+
+    OUTPUT:
+    df = training dataframe that is ready to XGBOOST
+    NMF_model = NMF model
+    tfidf_feat_model = tfidf model used to add features
+    '''
 
     start_time = time.time()
-
     df,NMF_model = Data_prep2_NMF(df, tfidf_matrix, tfidf_model, NMF_list)
     df,tfidf_feat_model = Data_prep3(df, max_feature, tfidf_set)
     df.to_pickle("./preped_{}_max_feature{}.pkl".format(filename, max_feature))
@@ -109,12 +158,31 @@ def df_prep_train2(df, filename, tfidf_matrix, tfidf_model, max_feature = 1000, 
 
 
 def df_prep_test(df_test, tfidf_model,NMF_model, tfidf_feat_model,filename):
+    '''
+    FUNCTION:
+    This function is made to prepare my test dataset.
+    This function is like a mixture of df_prep_train1 and 2 except that
+    all models are already trained with training dataset so here you can
+    just use transform to get the results with test dataset.
 
+    INPUT:
+    df_test = your test dataset (panda dataframe)
+    tfidf_model = tfidf model created with training dataset
+    NMF_model = NMF model created with training dataset
+    tfidf_feat_model = tfidf model created to add tfidf terms as features
+                        (also trained with training dataset)
+    filename = used to name pickle file
+
+    OUTPUT:
+    df_NMF_test = test dataset that is ready to run XGBOOST!
+    '''
     start_time = time.time()
-
-    tfidf_matrix_test = tfidf_model.transform(df_test)
+    #create tfidf matrix and generate NMF result with test dataset
+    tfidf_matrix_test = tfidf_model.transform(df_test.reviewText)
     NMFresults_test = NMF_model.transform(tfidf_matrix_test)
     NMF_result_df = pd.DataFrame(NMFresults_test)
+    NMF_result_df.index = df_test.index
+    #add NMF results as features
     df_NMF_test = pd.concat([df_test,NMF_result_df],axis = 1)
     df_NMF_test = df_NMF_test.drop(['reviewerName','num_of_helpful_review',], \
                                                                     axis = 1)
@@ -128,6 +196,8 @@ def df_prep_test(df_test, tfidf_model,NMF_model, tfidf_feat_model,filename):
                             14:'percent_GROUP_15', 15:'percent_GROUP_16', \
                             16:'percent_GROUP_17', 17:'percent_GROUP_18', \
                             18:'percent_GROUP_19', 19:'percent_GROUP_20'})
+    #add tfidf terms as features.
+    print df_NMF_test.head(100)
     docs = df_NMF_test['reviewText']
     docs_np = np.array(docs).astype('U')
     docs_np = docs_np.tolist()
@@ -138,8 +208,9 @@ def df_prep_test(df_test, tfidf_model,NMF_model, tfidf_feat_model,filename):
     tfidf_mf = tfidf_feat_test.toarray()
     tfidf_df = pd.DataFrame(tfidf_mf)
     tfidf_df= tfidf_df.rename(columns =vocab_dict)
-
+    tfidf_df.index = df_NMF_test.index
     df_NMF_test = pd.concat([df_NMF_test,tfidf_df],axis = 1)
+    #removing features that are no longer needed.
     df_NMF_test = df_NMF_test.drop(['reviewText','summary', 'reviewerID', 'helpful_total_review'],axis = 1)
     df_NMF_test.to_pickle("./preped_{}_df_test.pkl".format(filename))
     print("--- %s seconds ---" % (time.time() - start_time))
@@ -310,10 +381,9 @@ def Data_prep2_NMF(new_df, tfidf_mat,tfidfmodel, NMF_set = [8,'cd',0.1,0.5]):
 
     #converting NMF results to a dataframe
     NMF_result_df = pd.DataFrame(NMFresults)
-
+    NMF_result_df.index = new_df.index
     df_NMF = pd.concat([new_df,NMF_result_df],axis = 1)
-    df_NMF = df_NMF.drop(['reviewerName','num_of_helpful_review',], \
-                                                                    axis = 1)
+    df_NMF = df_NMF.drop(['reviewerName','num_of_helpful_review',], axis = 1)
     # renaming NMF topics
     df_NMF = df_NMF.rename(columns = {0:'percent_GROUP_1', 1:'percent_GROUP_2',\
                             2:'percent_GROUP_3', 3:'percent_GROUP_4', \
@@ -372,6 +442,7 @@ def Data_prep3(df_NMF, max_feat, tfidf_set=[2,0.95,10000,'l2']):
         vocab_dict[k]=v
     tfidf_mf = tfidf_vectorized_mf.toarray()
     tfidf_df = pd.DataFrame(tfidf_mf)
+    tfidf_df.index = df_NMF.index
     tfidf_df= tfidf_df.rename(columns =vocab_dict)
 
     # convine tfidf dataframe above and output dataframe from Data_prep2_NMF
@@ -482,6 +553,33 @@ def XGBOOSTING(X_tr1,X_te1,y_tr1,y_te1,xgb_para=[4000,0.25]):
 
     return xgb
 
+def r_forest(X_tr1,X_te1,y_tr1,y_te1):
+    '''
+    FUNCTION:
+    Creates random forest model for you.
+    Just made this to compare results with XGBoost
+
+    INPUT:
+    X_tr,X_te,y_tr,y_te = both X and y training and test data
+
+    OUTPUT:
+    random forest model
+
+    Note:
+    I should explore more options for parameters
+
+    '''
+    #runs xgboost fitting. takes a while especially if you dataframe is large
+    start_time = time.time()
+    rf = RandomForestClassifier(n_estimators=1000)
+    rf.fit(X_tr1,y_tr1)
+    print("--- %s seconds ---" % (time.time() - start_time))
+    # print out XGboost score (test data overall accuracy)
+    score = rf.score(X_te1,y_te1)
+    print "RF score: {}%".format((score*100).round(2))
+
+    return rf
+
 
 def xgb_stats(model,new_df,X_test,y_test):
     '''
@@ -580,6 +678,7 @@ def add_meta_info(df,meta,key_word,filter_num,test=False):
     df_category = df_category.drop(key_word, axis=1)
 
     #merging merged_df and df_category
+    df_category.index = merged_df1.index
     merged_df1 = pd.concat([merged_df1,df_category], axis = 1)
     #filtering outliers in the merged_df1
     merged_df1 = _filter_merged_df(meta, merged_df1,ave_rank_val,filter_num)
@@ -657,10 +756,8 @@ def _add_rankings(meta, topic):
         elif meta.get_value(ind, 'salesRank') == {}:
             keys_list.append(topic)
             values_list.append(-1)
-        '''
-        if the salesRank has actual data, dictionary key is stored in keys_list and
-        dictionary value is stored in values_list.
-        '''
+        #if the salesRank has actual data, dictionary key is stored in keys_list and
+        #dictionary value is stored in values_list.
         else:
             keys_list.append(meta.get_value(ind, 'salesRank').keys()[0])
             values_list.append(meta.get_value(ind, 'salesRank').values()[0])
@@ -846,7 +943,7 @@ def print_top_words(model, feature_names, n_top_words):
         print("Topic #%d:" % topic_idx)
         print(" ".join([feature_names[i]
                         for i in topic.argsort()[:-n_top_words - 1:-1]]))
-    print(-- end --)
+    print('--end--')
 
 
 def _fit_nmf(k,M):
