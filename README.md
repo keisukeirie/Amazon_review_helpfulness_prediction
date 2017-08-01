@@ -122,10 +122,11 @@ LOW = not helpful reviews
 #### 2. Random Forest result 
 Overall prediction accuracy: 76.82%  
 Confusion Matrix:  
-|                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |
-|:--------------: | :-------------------:|:-----------------------:|
-|       NOT HELPFUL PRED     |        1492.0        |           555.0        |
-|        HIGHLY HELPFUL PRED     |        331.0        |           1445.0        |
+  
+|                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
+|:--------------: | :-------------------:|:-----------------------:|  
+|       NOT HELPFUL PRED     |        1492.0        |           555.0        |  
+|        HIGHLY HELPFUL PRED     |        331.0        |           1445.0        |  
   
 Not helpful review prediction rate: 81.84%  
 highly helpful review prediction rate: 72.25%  
