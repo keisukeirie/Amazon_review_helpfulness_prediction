@@ -92,6 +92,13 @@ my filter is applied to take out these minor categories.
 There are over 1900 features at the end of preprocessing.  
 During feature engineering, I added:  
 1. NMF results in percentage (10 features where 10 = number of topics)  
+
+
+  * To select NMF N topics, I used elbow method. However, the dataset did not plot obvious elbow.  
+    I decided # of N based on the change in error rate and I found that the change becumes insignificant  
+    after 10th topic.  
+
+
 2. Tfidf terms (1000 features where 1000 = number of tfidf terms)  
 3. name of sub categories (100 to 1000 features depending on the main category and filtering parameters)  
 4. review text length, rating that reviewer gave to a product, price, categories,  
