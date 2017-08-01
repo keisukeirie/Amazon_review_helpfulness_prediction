@@ -37,7 +37,7 @@ and created a XGboost binary classifier prediction model.
 Highly helpful reviews = reviews with more than 75% of total votes were positive (positive = voted as helpful review)  
 not helpful reviews = reviews with less than 75% of total votes were positive  
   
-With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.  
+**With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.**  
   
 ## Results  
   
@@ -134,6 +134,8 @@ highly helpful review prediction rate: 72.25%
 -------------------------
 　　
 ## Findings:  
+Random Forest model tends to have high accuracy in predicting note helpful reviews compare to highly helpful reviews.  
+
   
 **XGBoost model's top15 most important features:**  
 　　
