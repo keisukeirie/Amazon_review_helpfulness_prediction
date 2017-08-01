@@ -105,10 +105,10 @@ LOW = not helpful reviews
 ## MODELS 
 1. XGboost model  
   * parameter:
-  1. N estimators = 4000
-  2. Learning rates = 0.15
-  3. subsample = 0.8
-  4. Max Depth = 6
+    1. N estimators = 4000
+    2. Learning rates = 0.15
+    3. subsample = 0.8
+    4. Max Depth = 6
   
 2. Random Forest model  
   * parameter:  
@@ -120,14 +120,16 @@ LOW = not helpful reviews
 
 
 #### 2. Random Forest result 
-
+Overall prediction accuracy: 76.82%  
+Confusion Matrix:  
 |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |
 |:--------------: | :-------------------:|:-----------------------:|
 |       NOT HELPFUL PRED     |        1492.0        |           555.0        |
 |        HIGHLY HELPFUL PRED     |        331.0        |           1445.0        |
-
-Not helpful review prediction rate: 81.84%
-highly helpful review prediction rate: 72.25%
+  
+Not helpful review prediction rate: 81.84%  
+highly helpful review prediction rate: 72.25%  
+  
 -------------------------
 　　
 ## Findings:  
