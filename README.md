@@ -24,7 +24,7 @@ the review with most positive votes gets placed as "Top Customer Reviews" on the
 Here is an example from actual Amazon website:  
   
 -------------------
-<img src="images/example_of_review.png" width="600">  
+<img src="images/example_of_review.png" width="600" align = "middle">  
   
 -------------------
   
@@ -83,7 +83,7 @@ Filters were applied to
 1. product with null price values and null category sales ranking values  
 2. product that belongs to categories that are less than 5000 when products data is groupby category.*
 
-<img src="images/category_list_homeandkitchen.png" width="200"> 
+<img src="images/category_list_homeandkitchen.png" width="200" align = "middle"> 
 Here you are seeing a list of categories that Home & Kitchen products belongs to.  
 As you can see, there are categories that are not related to Home & Kitchen product at all (for example, Video Games).  
 my filter is applied to take out these minor categories.   
@@ -92,7 +92,7 @@ my filter is applied to take out these minor categories.
 There are over 1900 features at the end of preprocessing.  
 During feature engineering, I added:  
 1. NMF results in percentage (10 features where 10 = number of topics)  
-<img src="images/elbowPlot_first12.png" width="200">   
+<img src="images/elbowPlot_first12.png" width="200" align = "middle">   
   * To select NMF N topics, I used elbow method. However, the dataset did not plot obvious elbow.  
     I decided # of N based on the change in error rate and I found that the change becumes insignificant  
     after 10th topic.  
