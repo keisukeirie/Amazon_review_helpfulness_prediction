@@ -82,8 +82,10 @@ Filters were applied to
 1. product with null price values and null category sales ranking values  
 2. product that belongs to categories that are less than 5000 when products data is groupby category.*
 
-* filter is applied to take out any product with minor categories (these products can be consider as outliers).  
-However I feel that I should explore and try other number to see results with different filter settings.  
+![example](category_list_homeandkitchen.png)
+Here you are seeing a list of categories that Home & Kitchen products belongs to.  
+As you can see, there are categories that are not related to Home & Kitchen product at all (for example, Video Games).  
+my filter is applied to take out these minor categories.   
 
 #### Feature engineering:  
 There are over 1900 features at the end of preprocessing.  
