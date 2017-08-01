@@ -44,7 +44,7 @@ With high prediction accuracy, I can determine helpful reviews regardless of use
 Dataset used:  
 Home & Kitchen  
 Training data: # of reviews = 10,000  
-Test data: # of reviews = 3,823
+Test data: # of reviews = 3,823  
 Prediction accuracy: 76.01%   
 
 **Confusion Matrix**  
@@ -72,29 +72,72 @@ I merged review dataset and metadata together and preprocessed data to run predi
 ------------
 #### other info:
 
-## MODELS
-#### Filters applied to the model  
+
+#### Data cleaning  
+1. Null values on the price feature were filled with average price values for each category.  
+2. Null values on the sales ranking value feature were filled with average sales ranks for Home & Kitchen category products.  
   
-**label:**  
+#### Filters applied to the model  
+Filters were applied to 
+1. product with null price values and null category sales ranking values  
+2. product that belongs to categories that are less than 5000 when products data is groupby category.*
+
+* filter is applied to take out any product with minor categories (these products can be consider as outliers).  
+However I feel that I should explore and try other number to see results with different filter settings.  
+
+#### Feature engineering:  
+There are over 1900 features at the end of preprocessing.  
+During feature engineering, I added:  
+1. NMF results in percentage (10 features where 10 = number of topics)  
+2. Tfidf terms (1000 features where 1000 = number of tfidf terms)  
+3. name of sub categories (100 to 1000 features depending on the main category and filtering parameters)  
+4. review text length, rating that reviewer gave to a product, price, categories,  
+  sales ranking, percentage of review helpfulness (label) etc.
+
+
+
+#### Label:   
 HIGH,LOW
 
 HIGH = Highly helpful reviews  
 LOW = not helpful reviews  
 
------------------
-#### 1. XGBOOST
+## MODELS 
+1. XGboost model  
+  * parameter:
+  1. N estimators = 4000
+  2. Learning rates = 0.15
+  3. subsample = 0.8
+  4. Max Depth = 6
   
+2. Random Forest model  
+  * parameter:  
+    1. N estimators = 1000  
+    2. Max Features = 50  
+    
+-----------------
+#### 1. XGBOOST result
+
+
+#### 2. Random Forest result 
+
+|                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |
+|:--------------: | :-------------------:|:-----------------------:|
+|       NOT HELPFUL PRED     |        1492.0        |           555.0        |
+|        HIGHLY HELPFUL PRED     |        331.0        |           1445.0        |
+
+Not helpful review prediction rate: 81.84%
+highly helpful review prediction rate: 72.25%
 -------------------------
 　　
 ## Findings:  
- 
-   
+  
 **XGBoost model's top15 most important features:**  
 　　
 ## Other:  
   
 ## Resources:  
-
+  
 http://jmcauley.ucsd.edu/data/amazon/links.html  
 J. McAuley, A. Yang. Addressing Complex and Subjective Product-Related Queries with Customer Reviews. WWW, 2016　
 R. He, J. McAuley. Modeling the visual evolution of fashion trends with one-class collaborative filtering. WWW, 2016  
