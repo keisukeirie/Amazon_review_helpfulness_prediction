@@ -1,6 +1,6 @@
 # Amazon_review_helpfulness_prediction
 this is my repository for the Amazon Review Helpfulness prediction model project  
-_last updated: 7/26/2017_  
+_last updated: 8/01/2017_  
 
 ## Repo Instructions
 
@@ -43,17 +43,19 @@ With high prediction accuracy, I can determine helpful reviews regardless of use
   
 Dataset used:  
 Home & Kitchen  
-Prediction accuracy: 74.42%  
+Training data: # of reviews = 10,000  
+Test data: # of reviews = 3,823
+Prediction accuracy: 76.01%   
 
 **Confusion Matrix**  
 
-|                 |      LOW True       |        HIGH True       |
-|:--------------: | :------------------:|:----------------------:|
-|  LOW Predicted  |         1571        |            726         |
-|  HIGH Predicted |          252        |           1274         |  
+ |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
+ |:--------------: | :-------------------:|:-----------------------:|  
+ |       NOT HELPFUL PRED     |        1359.0        |           453.0        |  
+ |        HIGHLY HELPFUL PRED     |        464.0        |           1547.0        |  
 
-LOW prediction rate: 86.18%  
-HIGH prediction rate: 63.7%  
+Not helpful prediction rate: 74.55%  
+HIGH helpful prediction rate: 77.35%  
   
 ## Data used:
 
