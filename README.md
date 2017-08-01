@@ -24,7 +24,7 @@ the review with most positive votes gets placed as "Top Customer Reviews" on the
 Here is an example from actual Amazon website:  
   
 -------------------
-<img src="images/example_of_review.png" width="200"> 
+<img src="images/example_of_review.png" width="600"> 
 -------------------
   
 My question is:  
