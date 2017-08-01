@@ -24,7 +24,7 @@ the review with most positive votes gets placed as "Top Customer Reviews" on the
 Here is an example from actual Amazon website:  
   
 -------------------
-![example1](images/example_of_review.png=250x)  
+![example1](images/example_of_review.png =250x)  
 -------------------
   
 My question is:  
@@ -82,7 +82,7 @@ Filters were applied to
 1. product with null price values and null category sales ranking values  
 2. product that belongs to categories that are less than 5000 when products data is groupby category.*
 
-![example](images/category_list_homeandkitchen.png=250x)
+![example](images/category_list_homeandkitchen.png =250x)  
 Here you are seeing a list of categories that Home & Kitchen products belongs to.  
 As you can see, there are categories that are not related to Home & Kitchen product at all (for example, Video Games).  
 my filter is applied to take out these minor categories.   
