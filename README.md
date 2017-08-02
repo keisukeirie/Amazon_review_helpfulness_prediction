@@ -79,7 +79,7 @@ I merged review dataset and metadata together and preprocessed data to run predi
 2. Null values on the sales ranking value feature were filled with average sales ranks for Home & Kitchen category products.  
   
 #### Filters applied to the model  
-<img src="images/category_list_homeandkitchen.png" width="120" align="right">   
+<img src="images/category_list_homeandkitchen.png" width="150" align="right">   
   
   
 Filters were applied to
