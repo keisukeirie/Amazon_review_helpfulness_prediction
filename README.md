@@ -81,14 +81,15 @@ I merged review dataset and metadata together and preprocessed data to run predi
 #### Filters applied to the model  
 <img src="images/category_list_homeandkitchen.png" width="150" align="right">   
   
-  
 Filters were applied to
 1. product with null price values and null category sales ranking values  
 2. product that belongs to categories that are less than 5000 when products data is groupby category.  
 
-Left:  Here you are seeing a list of categories that Home & Kitchen products belongs to.  
-As you can see, there are categories that are not related to Home & Kitchen product at all (for example, Video Games).  
-my filter is applied to take out these minor categories.   
+Left:  Here you are seeing a list of categories that Home & Kitchen products belongs to.
+The number represents total number of product in that category.  
+As you can see, there are several categories that are not related to  
+Home & Kitchen products at all (for example, Video Games).  
+my filter is applied to take out these minor categories where total number is less than 5000.   
   
    
 #### Feature engineering:  
