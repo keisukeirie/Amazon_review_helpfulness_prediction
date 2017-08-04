@@ -52,6 +52,7 @@ Prediction accuracy: 76.01%
 #### 1. XGBOOST result
 Overall prediction accuracy: 76.51%   
 Confusion Matrix:  
+  
 |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
 |:--------------: | :-------------------:|:-----------------------:|  
 |       NOT HELPFUL PRED     |        1423.0        |           498.0        |  
@@ -152,6 +153,7 @@ LOW = not helpful reviews
 #### 1. XGBOOST result
 Overall prediction accuracy: 76.51%   
 Confusion Matrix:  
+  
 |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
 |:--------------: | :-------------------:|:-----------------------:|  
 |       NOT HELPFUL PRED     |        1423.0        |           498.0        |  
