@@ -44,7 +44,7 @@ not helpful reviews = reviews with less than 75% of total votes were positive
   
 Dataset used:  
 Home & Kitchen  
-Training data: # of reviews = 10,000  
+Training data: # of reviews = 20,000  
 Test data: # of reviews = 3,823  
 Prediction accuracy: 76.01%   
 
@@ -67,12 +67,14 @@ including 142.8 million reviews spanning May 1996 - July 2014.
 The dataset includes reviews (ratings, text, helpfulness votes),   
 product metadata (descriptions, category information, price, brand, and image features),   
 and links (also viewed/also bought graphs).  
-  
-I merged review dataset and metadata together and preprocessed data to run prediction model.  
-  
-------------
-#### other info:
 
+For my prediction model listed here, I used Home & kitchen product dataset which contains:  
+  1. 4,253,926 reviews  
+  2. 436,988 products meta data  
+I merged meta data and reviews and preprocessed data before running prediction model. 
+------------  
+  
+## Preprocessing
 
 #### Data cleaning  
 1. Null values on the price feature were filled with average price values for each category.  
@@ -109,8 +111,6 @@ values represents correlation between a review (row) and NMF groups.
 3. name of sub categories (100 to 1000 features depending on the main category and filtering parameters)  
 4. review text length, rating that reviewer gave to a product, price, categories,  
   sales ranking, percentage of review helpfulness (label) etc.
-
-
 
 #### Label:   
 HIGH,LOW
