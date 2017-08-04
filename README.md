@@ -96,13 +96,13 @@ my filter is applied to take out these minor categories where total number is le
 There are over 1900 features at the end of preprocessing.  
 During feature engineering, I added:  
 1. NMF results in percentage (10 features where 10 = number of topics)  
-<img src="images/elbowPlot_first12.png" width="500" align="middle">   
+<img src="images/elbowPlot_first12.png" width="200" align="middle">   
   * To select NMF N topics, I used elbow method. However, the dataset did not plot obvious elbow.  
     I decided # of N based on the change in error rate and I found that the change becumes insignificant  
     after 10th topic.  
 
 NMF result:  
-<img src="images/resultsofNMF.png" width="200" align="middle">  
+<img src="images/resultsofNMF.png" width="500" align="middle">  
 values represents correlation between a review (row) and NMF groups.    
 
 2. Tfidf terms (1000 features where 1000 = number of tfidf terms)  
