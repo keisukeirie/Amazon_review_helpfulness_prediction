@@ -1,6 +1,6 @@
 # Amazon_review_helpfulness_prediction
 this is my repository for the Amazon Review Helpfulness prediction model project  
-_last updated: 8/01/2017_  
+_last updated: 8/04/2017_  
 
 ## Repo Instructions
 
@@ -23,7 +23,6 @@ the review with most positive votes gets placed as "Top Customer Reviews" on the
   
 Here is an example from actual Amazon website:  
   
--------------------
 <img src="images/example_of_review.png" width="600" align="middle">  
   
 -------------------
@@ -32,11 +31,11 @@ My question is:
 **Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**  
    
 To answer this question, I used Amazon review dataset from [Julian McAuley's website](http://jmcauley.ucsd.edu/data/amazon/links.html)  
-and created a XGboost binary classifier prediction model.  
+and built a xgboost ensemble method model that identify each review as highly helpful review or not helpful review.  
   
-2 label classes for my model:  
-Highly helpful reviews = reviews with more than 75% of total votes were positive (positive = voted as helpful review)  
-not helpful reviews = reviews with less than 75% of total votes were positive  
+The definition of 2 label classes:    
+Highly helpful reviews = Amazon reviews with more than 75% of votes being positive (= helpful)
+not helpful reviews = Amazon reviews with less than 75% of votes being positive  
   
 **With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.**  
   
@@ -71,8 +70,9 @@ and links (also viewed/also bought graphs).
 For my prediction model listed here, I used Home & kitchen product dataset which contains:  
   1. 4,253,926 reviews  
   2. 436,988 products meta data  
-I merged meta data and reviews and preprocessed data before running prediction model. 
-------------  
+  
+I merged meta data and reviews and preprocessed data before running prediction model.  
+
   
 ## Preprocessing
 
