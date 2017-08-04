@@ -101,6 +101,9 @@ During feature engineering, I added:
     I decided # of N based on the change in error rate and I found that the change becumes insignificant  
     after 10th topic.  
 
+NMF result:  
+<img src="images/resultsofNMF.png" width="200" align="middle">  
+values represents correlation between a review (row) and NMF groups.    
 
 2. Tfidf terms (1000 features where 1000 = number of tfidf terms)  
 3. name of sub categories (100 to 1000 features depending on the main category and filtering parameters)  
