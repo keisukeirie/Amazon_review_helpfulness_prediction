@@ -154,9 +154,38 @@ Random Forest model tends to have high accuracy in predicting note helpful revie
 
   
 **XGBoost model's top15 most important features:**  
-　　
+
+--------------
 ## Other:  
+### NMF result for Home & Kitchen products:
+Top 20 words found in each NMF groups  
+Topic #1:  
+machine blender ice use make juicer juice cream bowl mixer clean blade easy food bread time fruit smoothie good dough  
+Topic #2:  
+coffee cup water maker machine brew filter grind carafe grinder espresso hot ground pot make bean use pour mug taste  
+Topic #3:  
+vacuum carpet floor clean dyson dirt bag suction hair brush dust cleaner attachment hose use canister pick hoover vac filter  
+Topic #4:  
+knife blade sharp set sharpen cut edge chef sharpener handle slice steel block use henckel wusthof good steak hand dull  
+Topic #5:  
+pan stick cook non use heat cookware pot egg set oil iron food grill handle cast skillet clean surface calphalon  
+Topic #6:  
+mattress bed pillow sleep sheet foam memory pad night topper soft comfortable feel firm cover like smell queen wake good  
+Topic #7:  
+rice cooker cook pot pressure slow brown cooking steam cup water lid time use warm crock food make steamer minute  
+Topic #8:  
+unit fan air room water heater filter heat cool run window temperature work low turn quiet use high noise setting  
+Topic #9:  
+oven toaster toast bread cook pizza convection bake bagel use microwave timer rack slice burn heat setting time door tray  
+Topic #10:  
+product buy look item amazon use good like make purchase order review work return set say price quality time great  
   
+The NMF result shows that NMF splits reviews by type of Home & Kitchen product that user reviewed (topic #1 through #9).  
+The Topic #10 seems to be the NMF group for reviews with positive user sentiment and
+my models show that reviews that are highly correlated to this topic tend to be highly helpful reviews.   
+  
+-------------- 
+
 ## Resources:  
   
 http://jmcauley.ucsd.edu/data/amazon/links.html  
