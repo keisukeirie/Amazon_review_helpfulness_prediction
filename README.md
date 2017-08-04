@@ -49,13 +49,30 @@ Prediction accuracy: 76.01%
 
 **Confusion Matrix**  
 
- |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
- |:--------------: | :-------------------:|:-----------------------:|  
- |       NOT HELPFUL PRED     |        1359.0        |           453.0        |  
- |        HIGHLY HELPFUL PRED     |        464.0        |           1547.0        |  
+#### 1. XGBOOST result
+Overall prediction accuracy: 76.51%   
+Confusion Matrix:  
+|                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
+|:--------------: | :-------------------:|:-----------------------:|  
+|       NOT HELPFUL PRED     |        1423.0        |           498.0        |  
+|        HIGHLY HELPFUL PRED     |        400.0        |           1502.0        |  
+  
+Not helpful review prediction rate: 78.06%  
+Highly helpful review prediction rate: 75.1%  
 
-Not helpful prediction rate: 74.55%  
-HIGH helpful prediction rate: 77.35%  
+#### 2. Random Forest result 
+Overall prediction accuracy: 76.82%  
+Confusion Matrix:  
+  
+|                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
+|:--------------: | :-------------------:|:-----------------------:|  
+|       NOT HELPFUL PRED     |        1492.0        |           555.0        |  
+|        HIGHLY HELPFUL PRED     |        331.0        |           1445.0        |  
+  
+Not helpful review prediction rate: 81.84%  
+Highly helpful review prediction rate: 72.25%  
+  
+-------------------------
   
 ## Data used:
 
@@ -121,10 +138,10 @@ LOW = not helpful reviews
 ## MODELS 
 1. XGboost model  
   * parameter:
-    1. N estimators = 4000
-    2. Learning rates = 0.15
-    3. subsample = 0.8
-    4. Max Depth = 6
+    1. N estimators = 2000
+    2. Learning rates = 0.1
+    3. subsample = 1
+    4. Max Depth = 10
   
 2. Random Forest model  
   * parameter:  
@@ -133,7 +150,15 @@ LOW = not helpful reviews
     
 -----------------
 #### 1. XGBOOST result
-
+Overall prediction accuracy: 76.51%   
+Confusion Matrix:  
+|                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
+|:--------------: | :-------------------:|:-----------------------:|  
+|       NOT HELPFUL PRED     |        1423.0        |           498.0        |  
+|        HIGHLY HELPFUL PRED     |        400.0        |           1502.0        |  
+  
+Not helpful review prediction rate: 78.06%  
+Highly helpful review prediction rate: 75.1%  
 
 #### 2. Random Forest result 
 Overall prediction accuracy: 76.82%  
@@ -145,7 +170,7 @@ Confusion Matrix:
 |        HIGHLY HELPFUL PRED     |        331.0        |           1445.0        |  
   
 Not helpful review prediction rate: 81.84%  
-highly helpful review prediction rate: 72.25%  
+Highly helpful review prediction rate: 72.25%  
   
 -------------------------
 　　
