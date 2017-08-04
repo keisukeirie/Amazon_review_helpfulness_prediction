@@ -44,11 +44,8 @@ Not helpful reviews = Amazon reviews with less than 75% of votes being positive
 Dataset used:  
 Home & Kitchen  
 Training data: # of reviews = 20,000  
-Test data: # of reviews = 3,823  
-Prediction accuracy: 76.01%   
-
-**Confusion Matrix**  
-
+Test data: # of reviews = 3,823      
+  
 #### 1. XGBOOST result
 Overall prediction accuracy: 76.51%   
 Confusion Matrix:  
