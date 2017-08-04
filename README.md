@@ -31,11 +31,11 @@ My question is:
 **Can Machine learning model learn characteristics of good customer reviews and predict helpfulness of reviews?**  
    
 To answer this question, I used Amazon review dataset from [Julian McAuley's website](http://jmcauley.ucsd.edu/data/amazon/links.html)  
-and built a xgboost ensemble method model that identify each review as highly helpful review or not helpful review.  
+and built a xgboost ensemble method model that identify each review as highly helpful or not helpful.  
   
 The definition of 2 label classes:    
-Highly helpful reviews = Amazon reviews with more than 75% of votes being positive (= helpful)
-not helpful reviews = Amazon reviews with less than 75% of votes being positive  
+Highly helpful reviews = Amazon reviews with more than 75% of votes being positive (= helpful)  
+Not helpful reviews = Amazon reviews with less than 75% of votes being positive  
   
 **With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.**  
   
