@@ -155,7 +155,7 @@ Random Forest model tends to have high accuracy in predicting note helpful revie
   
 **XGBoost model's top15 most important features:**  
 
---------------
+
 ## Other:  
 ### NMF result for Home & Kitchen products:
 Top 20 words found in each NMF groups  
@@ -184,7 +184,6 @@ The NMF result shows that NMF splits reviews by type of Home & Kitchen product t
 The Topic #10 seems to be the NMF group for reviews with positive user sentiment and
 my models show that reviews that are highly correlated to this topic tend to be highly helpful reviews.   
   
--------------- 
 
 ## Resources:  
   
