@@ -91,6 +91,16 @@ I merged meta data and reviews and preprocessed data before running prediction m
   
 ## Preprocessing
 
+flow:  
+1. merging meta data and reviews by product id
+2. train,test split (need to do this before creating tfidf matrix for training dataset)
+3. clean data (check for nulls) for both train and test
+4. apply filters for both train and test
+5. feature engineer for both train and test
+6. check for features that only have 1 value (a column where all values are zero).  
+  - identify these features in training set, and remove features from training and test dataset.  
+
+
 #### Data cleaning  
 1. Null values on the price feature were filled with average price values for each category.  
 2. Null values on the sales ranking value feature were filled with average sales ranks for Home & Kitchen category products.  
@@ -140,6 +150,11 @@ LOW = not helpful reviews
     2. Learning rates = 0.1
     3. subsample = 0.8
     4. Max Depth = 25
+    5. gamma = 0.3
+    6. colsample_bytree =0.8
+    7. reg_alpha=0.01
+  * This parameter setting maximized my result with the home & kitchen dataset.  
+    you would need to find out different setting if you are working with different dataset.  
   
 2. Random Forest model  
   * parameter:  
