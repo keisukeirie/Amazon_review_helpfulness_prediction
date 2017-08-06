@@ -148,14 +148,33 @@ LOW = not helpful reviews
   * parameter:
     1. N estimators = 2000
     2. Learning rates = 0.1
-    3. subsample = 0.8
+    3. subsample = 0.9
     4. Max Depth = 25
     5. gamma = 0.3
     6. colsample_bytree =0.8
     7. reg_alpha=0.01
   * This parameter setting maximized my result with the home & kitchen dataset.  
     you would need to find out different setting if you are working with different dataset.  
-  
+
+#### Parameter setting
+I initially had only estimators and learning rates for my Xgboost parameters 
+but I decided to dig deeper and optimize my result.  
+
+I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.
+the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)  
+so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy.  
+
+results of parameter optimization:  
+initial results:  
+75.3% overall accuracy  
+
+final results:
+77.2% overall accuracy  
+
+Not a lot of improvement was made for amount of time spent on this parameter optimization
+But I guess that is typical when working on xgboost parameterization with some computation power.
+(By the way, my work is done under single m4.2xlarge AWS instance).
+
 2. Random Forest model  
   * parameter:  
     1. N estimators = 1000  
@@ -223,6 +242,19 @@ The NMF result shows that NMF splits reviews by type of Home & Kitchen product t
 The Topic #10 seems to be the NMF group for reviews with positive user sentiment and
 my models show that reviews that are highly correlated to this topic tend to be highly helpful reviews.   
   
+   
+### Computation times  
+I used single m4.2xlarge AWS instance to run my code.  
+Preprocessing takes about total of 2500-3000 sec. (= about 40-50min)  
+  
+with my training dataset (20000 rows with 1900 features):  
+single xgboost computation takes about 2000-3000 sec.(=about 30-50min)   
+If I restrict max_depth to  the default value of 3, computation time should be around 300sec max.  
+  
+with few restrictions, random forest runs much quicker than xgboost,    
+it took me only about 200sec.  
+
+
 
 ## Resources:  
   
