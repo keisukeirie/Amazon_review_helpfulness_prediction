@@ -251,7 +251,7 @@ with my training dataset (20000 rows with 1900 features):
 single xgboost computation takes about 2000-3000 sec.(=about 30-50min)   
 If I restrict max_depth to  the default value of 3, computation time should be around 300sec max.  
   
-with few restrictions, random forest runs much quicker than xgboost,    
+with only few parameters, random forest runs much quicker than xgboost,    
 it took me only about 200sec.  
 
 
