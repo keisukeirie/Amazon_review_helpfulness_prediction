@@ -1,6 +1,6 @@
 # Amazon_review_helpfulness_prediction
 this is my repository for the Amazon Review Helpfulness prediction model project  
-_last updated: 8/04/2017_  
+_last updated: 8/06/2017_  
 
 ## Repo Instructions
 
@@ -98,9 +98,9 @@ flow:
 4. apply filters for both train and test
 5. feature engineer for both train and test
 6. check for features that only have 1 value (a column where all values are zero).  
-  - identify these features in training set, and remove features from training and test dataset.  
-
-
+    - identify these features in training set, and remove features from training and test dataset.  
+  
+  
 #### Data cleaning  
 1. Null values on the price feature were filled with average price values for each category.  
 2. Null values on the sales ranking value feature were filled with average sales ranks for Home & Kitchen category products.  
