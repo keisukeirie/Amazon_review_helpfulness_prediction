@@ -91,7 +91,7 @@ I merged meta data and reviews and preprocessed data before running prediction m
   
 ## Preprocessing
 
-flow:  
+#### flow  
 1. merging meta data and reviews by product id
 2. train,test split (need to do this before creating tfidf matrix for training dataset)
 3. clean data (check for nulls) for both train and test
@@ -157,10 +157,10 @@ LOW = not helpful reviews
     you would need to find out different setting if you are working with different dataset.  
 
 #### Parameter setting
-I initially had only estimators and learning rates for my Xgboost parameters 
+I initially had only estimators and learning rates for my Xgboost parameters 　
 but I decided to dig deeper and optimize my result.  
 
-I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.
+I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.　　
 the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)  
 so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy.  
 
@@ -168,13 +168,12 @@ results of parameter optimization:
 initial results:  
 75.3% overall accuracy  
 
-final results:
-77.2% overall accuracy  
+final results:　　
+77.2% overall accuracy  　
 
-Not a lot of improvement was made for amount of time spent on this parameter optimization
-But I guess that is typical when working on xgboost parameterization with some computation power.
-(By the way, my work is done under single m4.2xlarge AWS instance).
-
+Not a lot of improvement was made for amount of time spent on this parameter optimization  
+but I guess that is typical when working on xgboost parameterization.  
+  
 2. Random Forest model  
   * parameter:  
     1. N estimators = 1000  
@@ -208,8 +207,13 @@ Highly helpful review prediction rate: 72.25%
 -------------------------
 　　
 ## Findings:  
-Random Forest model tends to have high accuracy in predicting note helpful reviews compare to highly helpful reviews.  
-
+- Random Forest model tends to have high accuracy in predicting not helpful reviews compare to highly helpful reviews.  
+- Even though overall accuracies of xgboost and random forest model are about the same, xgboost model predicted highly helpful reviews 4% more than random forest model with good amount of parameter optimization.  
+- important features from XGBoost model tell us that:  
+  1. rank_values are important. I am guessing that there are worse reviews for more popular items.  
+  2. percent_GROUP_10 is one of my NMF results that grouped words from reviews with high rating. Meaning that it only contains words that represents positive sentiment of reviewers.  
+  3. multiple tfidf terms were my top features. I am not sure how these words influence quality of reviews but it seems like there is some connections that people don't see.  
+  4. I am not sure how price of product influenced prediction but there have to be some correlation between quality of reviews and price of items. My guess is that reviews of expensive items tend to get helpful votes more than less expensive items.  
   
 **XGBoost model's top15 most important features:**  
 percent_GROUP_5 : 1.06626739725%  
@@ -275,18 +279,17 @@ my models show that reviews that are highly correlated to this topic tend to be 
   
    
 ### Computation times  
-I used single m4.2xlarge AWS instance to run my code.  
-Preprocessing takes about total of 2500-3000 sec. (= about 40-50min)  
+I used single m4.2xlarge AWS instance to run my codes.  
+Preprocessing took about total of 2500-3000 sec. (= about 40-50min)  
   
 with my training dataset (20000 rows with 1900 features):  
-single xgboost computation takes about 2000-3000 sec.(=about 30-50min)   
-If I restrict max_depth to  the default value of 3, computation time should be around 300sec max.  
+single xgboost computation took about 2000-3000 sec.(=about 30-50min)   
+If I restrict max_depth to  the default value of 3, computation time should be around 500sec max.  
   
 with only few parameters, random forest runs much quicker than xgboost,    
 it took me only about 200sec.  
-
-
-
+  
+  
 ## Resources:  
   
 http://jmcauley.ucsd.edu/data/amazon/links.html  
