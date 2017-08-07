@@ -207,6 +207,16 @@ Highly helpful review prediction rate: 72.25%
 -------------------------
 　　
 ## Findings:  
+  
+### Preprocessing:  
+- meta data (product information) contains many important features like product rankings and product price.  
+  * prediction results using model with meta data information outperformed model without meta data by around 4 to 5%.  
+  
+- tfidf terms. They are important features for my prediction model.  
+  * I created models with top 100 tfidf terms, top 500 tfidf terms and 1000 tfidf terms as features.  
+  * the model with 1000 tfidf term features had much better prediction results than other two models.  
+  
+### Results:  
 - Random Forest model tends to have high accuracy in predicting not helpful reviews compare to highly helpful reviews.  
 - Even though overall accuracies of xgboost and random forest model are about the same, xgboost model predicted highly helpful reviews 4% more than random forest model with good amount of parameter optimization.  
 - important features from XGBoost model tell us that:  
