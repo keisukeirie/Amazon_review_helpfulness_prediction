@@ -250,7 +250,6 @@ text_length : 2.83935230228%
 overall : 8.2429583893%  
 
 ## Future work　　
-　　
 Adding features:　　
   - n-gram tfidf terms, NMF results　　
     - probably the good starting point is playing with sklearn tfidfvectorizer and use different n-gram setting  
@@ -259,12 +258,13 @@ Adding features:　　
     
 Reducing features:　　
   - I think I can reduce dimensionality and increase overall accuracy by reducing less important features from my dataset.  
-  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features.　　
-　　
+  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features.  
+  
 Working with bigger dataset/major category:  
  - with more products and more reviews, I believe my nlp method works better.  
  - I just need better AWS instances or set up spark or hadoop that runs with AWS slave instances.  
- 
+   
+   
 ## Other:  
 ### NMF result for Home & Kitchen products:
 Top 20 words found in each NMF groups  
