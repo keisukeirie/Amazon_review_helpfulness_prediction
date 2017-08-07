@@ -327,5 +327,5 @@ J. McAuley, C. Targett, J. Shi, A. van den Hengel. Image-based recommendations o
   
 [Topic Modeling with scikit Learn ](https://medium.com/@aneesha/topic-modeling-with-scikit-learn-e80d33668730)  
   
-[pycon-nlp-in-10-lines (Github)] (https://github.com/cytora/pycon-nlp-in-10-lines)  
+[pycon-nlp-in-10-lines (Github) ](https://github.com/cytora/pycon-nlp-in-10-lines)  
   
