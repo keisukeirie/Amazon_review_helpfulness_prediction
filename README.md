@@ -305,10 +305,17 @@ If I restrict max_depth to  the default value of 3, computation time should be a
 with only few parameters, random forest runs much quicker than xgboost,    
 it took me only about 200sec.  
   
-  
+## Acknowledgement
+I'd like to thank Julian McAuley for giving me an opportunity to use his dataset for this project.
+
 ## Resources:  
   
 http://jmcauley.ucsd.edu/data/amazon/links.html  
 J. McAuley, A. Yang. Addressing Complex and Subjective Product-Related Queries with Customer Reviews. WWW, 2016　
 R. He, J. McAuley. Modeling the visual evolution of fashion trends with one-class collaborative filtering. WWW, 2016  
 J. McAuley, C. Targett, J. Shi, A. van den Hengel. Image-based recommendations on styles and substitutes. SIGIR, 2015  
+  
+[Topic Modeling with scikit Learn ](https://medium.com/@aneesha/topic-modeling-with-scikit-learn-e80d33668730)  
+  
+[pycon-nlp-in-10-lines (Github)] (https://github.com/cytora/pycon-nlp-in-10-lines)  
+  
