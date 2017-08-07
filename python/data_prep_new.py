@@ -553,7 +553,7 @@ def XGBOOSTING(X_tr1,X_te1,y_tr1,y_te1,xgb_para=[4000,0.25]):
 
     return xgb
 
-def r_forest(X_tr1,X_te1,y_tr1,y_te1):
+def r_forest(X_tr1,X_te1,y_tr1,y_te1,parameter=[1000,'auto',None]):
     '''
     FUNCTION:
     Creates random forest model for you.
@@ -561,7 +561,7 @@ def r_forest(X_tr1,X_te1,y_tr1,y_te1):
 
     INPUT:
     X_tr,X_te,y_tr,y_te = both X and y training and test data
-
+    parameter = parameter for random forest. n_estimators, max_features and max_depth.
     OUTPUT:
     random forest model
 
@@ -571,7 +571,7 @@ def r_forest(X_tr1,X_te1,y_tr1,y_te1):
     '''
     #runs xgboost fitting. takes a while especially if you dataframe is large
     start_time = time.time()
-    rf = RandomForestClassifier(n_estimators=1000)
+    rf = RandomForestClassifier(n_estimators=parameter[0], max_features = parameter[1], max_depth=parameter[2])
     rf.fit(X_tr1,y_tr1)
     print("--- %s seconds ---" % (time.time() - start_time))
     # print out XGboost score (test data overall accuracy)
