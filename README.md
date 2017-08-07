@@ -144,7 +144,7 @@ HIGH = Highly helpful reviews
 LOW = not helpful reviews  
 
 ## MODELS 
-1. XGboost model  
+### 1. XGboost model  
   * parameter:
     1. N estimators = 2000
     2. Learning rates = 0.1
@@ -174,7 +174,7 @@ final results:
 Not a lot of improvement was made for amount of time spent on this parameter optimization  
 but I guess that is typical when working on xgboost parameterization.  
   
-2. Random Forest model   
+### 2. Random Forest model   
   * parameter:  
     1. N estimators = 1000  
     2. Max Features = 50  
