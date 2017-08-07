@@ -258,8 +258,8 @@ Adding features:　　
     - Other option is to use textacy (textacy.extract.ngrams).　　
     
 Reducing features:　　
-  - I think I can reduce dimensionality and increase overall accuracy by reducing less important features from my dataset.  　　
-  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features.　　
+  - I think I can reduce dimensionality and increase overall accuracy by reducing less important features from my dataset.  
+  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features.　　
 　　
 Working with bigger dataset/major category:  
  - with more products and more reviews, I believe my nlp method works better.  
