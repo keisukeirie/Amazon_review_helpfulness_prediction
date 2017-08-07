@@ -47,16 +47,16 @@ Training data: # of reviews = 20,000
 Test data: # of reviews = 3,823      
   
 #### 1. XGBOOST result
-Overall prediction accuracy: 76.72%     
+Overall prediction accuracy: 77.24%     
 Confusion Matrix:  
   
  |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
  |:--------------: | :-------------------:|:-----------------------:|  
- |       NOT HELPFUL PRED     |        1421.0        |           488.0        |  
- |        HIGHLY HELPFUL PRED     |        402.0        |           1512.0        |  
+ |       NOT HELPFUL PRED     |        1426.0        |           473.0        |  
+ |        HIGHLY HELPFUL PRED     |        397.0        |           1527.0        |  
   
-Not helpful review prediction rate: 77.95%  
-Highly helpful review prediction rate: 75.6%  
+Not helpful review prediction rate: 78.22%  
+Highly helpful review prediction rate: 76.35%  
   
 #### 2. Random Forest result 
 Overall prediction accuracy: 76.82%  
@@ -182,16 +182,16 @@ But I guess that is typical when working on xgboost parameterization with some c
     
 -----------------
 #### 1. XGBOOST result  
-Overall prediction accuracy: 76.72%     
+Overall prediction accuracy: 77.24%     
 Confusion Matrix:  
   
  |                 |       NOT HELPFUL TRUE       |        HIGHLY HELPFUL TRUE        |  
  |:--------------: | :-------------------:|:-----------------------:|  
- |       NOT HELPFUL PRED     |        1421.0        |           488.0        |  
- |        HIGHLY HELPFUL PRED     |        402.0        |           1512.0        |  
+ |       NOT HELPFUL PRED     |        1426.0        |           473.0        |  
+ |        HIGHLY HELPFUL PRED     |        397.0        |           1527.0        |  
   
-Not helpful review prediction rate: 77.95%  
-Highly helpful review prediction rate: 75.6%  
+Not helpful review prediction rate: 78.22%  
+Highly helpful review prediction rate: 76.35%  
   
 #### 2. Random Forest result 
 Overall prediction accuracy: 76.82%  
@@ -212,7 +212,38 @@ Random Forest model tends to have high accuracy in predicting note helpful revie
 
   
 **XGBoost model's top15 most important features:**  
+percent_GROUP_5 : 1.06626739725%  
+overall : 1.06887128204%  
+tfidf term "plan" : 1.08449421823%  
+tfidf term "tank" : 1.10662672669%  
+tfidf term "canister" : 1.14698605612%  
+tfidf term "unit" : 1.20166642591%  
+tfidf term "bring" : 1.30321569741%  
+percent_GROUP_3 : 1.35008459911%  
+tfidf term "firm" : 1.64041146636%  
+percent_GROUP_8 : 1.82528309524%  
+percent_GROUP_1 : 2.2015362978%  
+text_length : 3.62322628498%  
+percent_GROUP_10 : 3.6336414516%  
+price : 3.9552140981%  
+rank_values : 4.77411784232% 
 
+ **RF model's TOP15 most important features**  
+tfidf term "sturdy" : 0.584678335779%  
+tfidf term "away" : 0.585385341721%  
+percent_GROUP_3 : 0.595985233692%  
+tfidf term "plan" : 0.603078315879%  
+tfidf term "canister" : 0.615096497908%  
+percent_GROUP_8 : 0.836280530402%  
+percent_GROUP_1 : 0.875366369339%  
+percent_GROUP_10 : 0.878284937356%  
+tfidf term "firm" : 0.893000387224%  
+tfidf term "loud" : 0.968729776675%  
+rank_values : 1.06398524065%  
+tfidf term "main" : 1.17321765229%  
+price : 1.29460566953%  
+text_length : 2.83935230228%  
+overall : 8.2429583893%  
 
 ## Other:  
 ### NMF result for Home & Kitchen products:
