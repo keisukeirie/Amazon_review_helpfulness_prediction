@@ -157,28 +157,28 @@ LOW = not helpful reviews
     you would need to find out different setting if you are working with different dataset.  
 
 #### Parameter setting
-I initially had only estimators and learning rates for my Xgboost parameters　　
+I initially had only estimators and learning rates for my Xgboost parameters  
 but I decided to dig deeper and optimize my result.  
-　　
-I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.　　
-the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)　　
-so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy. 　　 
-
+  
+I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.  
+the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)  　
+so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy.   　　 
+  
 results of parameter optimization:  
 initial results:  
 75.3% overall accuracy  
-
-final results:　　
+  
+final results:  
 77.2% overall accuracy  　
-
-Not a lot of improvement was made for amount of time spent on this parameter optimization　　
+  
+Not a lot of improvement was made for amount of time spent on this parameter optimization  
 but I guess that is typical when working on xgboost parameterization.  
   
-2. Random Forest model  
+2. Random Forest model   
   * parameter:  
     1. N estimators = 1000  
     2. Max Features = 50  
-    
+  
 -----------------
 #### 1. XGBOOST result  
 Overall prediction accuracy: 77.24%     
