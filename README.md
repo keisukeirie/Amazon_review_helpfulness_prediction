@@ -157,12 +157,12 @@ LOW = not helpful reviews
     you would need to find out different setting if you are working with different dataset.  
 
 #### Parameter setting
-I initially had only estimators and learning rates for my Xgboost parameters 　
+I initially had only estimators and learning rates for my Xgboost parameters　　
 but I decided to dig deeper and optimize my result.  
-
+　　
 I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.　　
-the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)  
-so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy.  
+the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)　　
+so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy. 　　 
 
 results of parameter optimization:  
 initial results:  
@@ -171,7 +171,7 @@ initial results:
 final results:　　
 77.2% overall accuracy  　
 
-Not a lot of improvement was made for amount of time spent on this parameter optimization  
+Not a lot of improvement was made for amount of time spent on this parameter optimization　　
 but I guess that is typical when working on xgboost parameterization.  
   
 2. Random Forest model  
@@ -249,6 +249,22 @@ price : 1.29460566953%
 text_length : 2.83935230228%  
 overall : 8.2429583893%  
 
+## Future work　　
+　　
+Adding features:　　
+  - n-gram tfidf terms, NMF results　　
+    - probably the good starting point is playing with sklearn tfidfvectorizer and use different n-gram setting  
+      and run NMF with that tfidf-matrix. 　　
+    - Other option is to use textacy (textacy.extract.ngrams).　　
+    
+Reducing features:　　
+  - I think I can reduce dimensionality and increase overall accuracy by reducing less important features from my dataset.　　
+  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features.　　
+　　
+Working with bigger dataset/major category:  
+ - with more products and more reviews, I believe my nlp method works better.  
+ - I just need better AWS instances or set up spark or hadoop that runs with AWS slave instances.  
+ 
 ## Other:  
 ### NMF result for Home & Kitchen products:
 Top 20 words found in each NMF groups  
