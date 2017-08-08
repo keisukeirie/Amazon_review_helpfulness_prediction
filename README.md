@@ -41,11 +41,11 @@ Not helpful reviews = Amazon reviews with less than 75% of votes being positive
 ## Results  
   
 Dataset used:  
-Home & Kitchen  
-the total number of reviews in my dataset after preprocessing = 81,775
-Training data with balanced label classes: number of reviews = 20,000
-Test data with balanced label classes: number of reviews = 3,823   
-
+Home & Kitchen   
+the total number of reviews in my dataset after preprocessing = 81,775  
+Training data with balanced label classes: number of reviews = 20,000  
+Test data with balanced label classes: number of reviews = 3,823  
+  
   
 #### 1. XGBOOST result
 Overall prediction accuracy: 77.24%     
