@@ -17,8 +17,7 @@ images
 ## Introduction:  
 
 When you shop in Amazon, Do you notice that product reviews are in the order of helpfulness of reviews?  
-This helpfulness is based on user's votes. If Amazon users find a product review helpful,  
-users can simply leave positive votes on that review.  
+This helpfulness is based on user's votes. If Amazon users find a product review helpful, users can simply leave positive votes on that review.  
 the review with most positive votes gets placed as "Top Customer Reviews" on the product page by Amazon.  
   
 Here is an example from actual Amazon website:  
@@ -37,14 +36,16 @@ The definition of 2 label classes:
 Highly helpful reviews = Amazon reviews with more than 75% of votes being positive (= helpful)  
 Not helpful reviews = Amazon reviews with less than 75% of votes being positive  
   
-**With high prediction accuracy, I can determine helpful reviews regardless of user votes on Amazon.**  
+**If I can manage to create high prediction accuracy with my model, I can determine helpful reviews regardless of user votes on Amazon.**  
   
 ## Results  
   
 Dataset used:  
 Home & Kitchen  
-Training data: # of reviews = 20,000  
-Test data: # of reviews = 3,823      
+the total number of reviews in my dataset after preprocessing = 81,775
+Training data with balanced label classes: number of reviews = 20,000
+Test data with balanced label classes: number of reviews = 3,823   
+
   
 #### 1. XGBOOST result
 Overall prediction accuracy: 77.24%     
