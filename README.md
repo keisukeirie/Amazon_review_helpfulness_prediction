@@ -1,6 +1,6 @@
 # Amazon_review_helpfulness_prediction
 this is my repository for the Amazon Review Helpfulness prediction model project  
-_last updated: 8/06/2017_  
+_last updated: 9/14/2017_  
 
 ## Repo Instructions
 
@@ -162,7 +162,7 @@ I initially had only estimators and learning rates for my Xgboost parameters
 but I decided to dig deeper and optimize my result.  
   
 I tested Max depth and subsamples and ran kfold after finding comfortable values for the two.  
-the k-fold result showed that I was slightly overfitting (gave me the accuracy of around 79% as the best score)  　
+the k-fold result showed that I was slightly overfitting (the result from training (79%) was slightly higher than the test result)  　
 so I ended up adding gamma, reg_alpha, colsample_bytree to regularize and test if I can increase the overall accuracy.   　　 
   
 results of parameter optimization:  
@@ -170,7 +170,7 @@ initial results:
 75.3% overall accuracy  
   
 final results:  
-77.2% overall accuracy  　
+77.24% overall accuracy  　
   
 Not a lot of improvement was made for amount of time spent on this parameter optimization  
 but I guess that is typical when working on xgboost parameterization.  
@@ -219,12 +219,12 @@ Highly helpful review prediction rate: 72.25%
   
 ### Results:  
 - Random Forest model tends to have high accuracy in predicting not helpful reviews compare to highly helpful reviews.  
-- Even though overall accuracies of xgboost and random forest model are about the same, xgboost model predicted highly helpful reviews 4% more than random forest model with good amount of parameter optimization.  
+- Even though overall accuracies of xgboost and random forest model are about the same, xgboost model predicted highly helpful reviews 4% more than the random forest model.  
 - important features from XGBoost model tell us that:  
-  1. rank_values are important. I am guessing that there are worse reviews for more popular items.  
+  1. rank_values are important. I am guessing that there are bad reviews for popular items.  
   2. percent_GROUP_10 is one of my NMF results that grouped words from reviews with high rating. Meaning that it only contains words that represents positive sentiment of reviewers.  
-  3. multiple tfidf terms were my top features. I am not sure how these words influence quality of reviews but it seems like there is some connections that people don't see.  
-  4. I am not sure how price of product influenced prediction but there have to be some correlation between quality of reviews and price of items. My guess is that reviews of expensive items tend to get helpful votes more than less expensive items.  
+  3. multiple tfidf terms were my top features. I am not sure how these words influence quality of reviews but it seems like there is some connections that are not obvioust to us.  
+  4. I am not sure how price of product influenced prediction but there have to be some correlation between quality of reviews and price of items. My guess is that reviews of expensive items tend to get helpful votes more than less expensive items. I should check on this part for later.  
   
 **XGBoost model's top15 most important features:**  
 percent_GROUP_5 : 1.06626739725%  
@@ -266,14 +266,15 @@ Adding features:　　
     - probably the good starting point is playing with sklearn tfidfvectorizer and use different n-gram setting  
       and run NMF with that tfidf-matrix. 　　
     - Other option is to use textacy (textacy.extract.ngrams).　　
+    - Run this code with Spark. Apache Spark should give me faster computation time when preprocessing data.
     
 Reducing features:　　
   - I think I can reduce dimensionality and increase overall accuracy by reducing less important features from my dataset.  
-  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features.  
+  - My hope is to find a systematic way of finding these features and put additional steps to drop these features rather than finding least important features and droping last 50 features or 100features after running xgboost or random forest.  
   
 Working with bigger dataset/major category:  
  - with more products and more reviews, I believe my nlp method works better.  
- - I just need better AWS instances or set up spark or hadoop that runs with AWS slave instances.  
+ - I just need better AWS instances or set up spark or hadoop to run cluster computing.  
    
    
 ## Other:  
@@ -300,7 +301,7 @@ oven toaster toast bread cook pizza convection bake bagel use microwave timer ra
 Topic #10:  
 product buy look item amazon use good like make purchase order review work return set say price quality time great  
   
-The NMF result shows that NMF splits reviews by type of Home & Kitchen product that user reviewed (topic #1 through #9).  
+The NMF result shows that NMF splits reviews by types of Home & Kitchen products that user reviewed (topic #1 through #9).  
 The Topic #10 seems to be the NMF group for reviews with positive user sentiment and
 my models show that reviews that are highly correlated to this topic tend to be highly helpful reviews.   
   
@@ -311,7 +312,7 @@ Preprocessing took about total of 2500-3000 sec. (= about 40-50min)
   
 with my training dataset (20000 rows with 1900 features):  
 single xgboost computation took about 2000-3000 sec.(=about 30-50min)   
-If I restrict max_depth to  the default value of 3, computation time should be around 500sec max.  
+If I restrict max_depth to the default value of 3, computation time should be around 500sec max.  
   
 with only few parameters, random forest runs much quicker than xgboost,    
 it took me only about 200sec.  
